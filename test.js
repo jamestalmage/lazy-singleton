@@ -8,7 +8,8 @@ import m from './index';
 test('sync', t => {
 	let count = 0;
 	const foo = function (...args) {
-		return `${++count} ${Boolean(new.target)} foo ${JSON.stringify(args)}`;
+		const isNew = this instanceof foo;
+		return `${++count} ${isNew} foo ${JSON.stringify(args)}`;
 	};
 
 	const singleFoo = m(foo)('bar', 'baz');
