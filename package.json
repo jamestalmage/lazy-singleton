@@ -1,0 +1,69 @@
+{
+	"name": "lazy-singleton",
+	"version": "0.0.0",
+	"description": "Create lazy initialized singletons",
+	"license": "MIT",
+	"repository": "jamestalmage/lazy-singleton",
+	"author": {
+		"name": "James Talmage",
+		"email": "james@talmage.io",
+		"url": "github.com/jamestalmage"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && nyc ava",
+		"prepare": "npm run build",
+		"build": "babel index.js -o browser.js"
+	},
+	"main": "browser.js",
+	"files": [
+		"index.js",
+		"browser.js"
+	],
+	"browser": "browser.js",
+	"keywords": [
+		""
+	],
+	"dependencies": {
+		"p2n": "^1.0.1"
+	},
+	"devDependencies": {
+		"ava": "^0.20.0",
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-register": "^6.26.0",
+		"codecov": "^2.2.0",
+		"nyc": "^11.0.0",
+		"pify": "^3.0.0",
+		"testdouble": "^3.2.6",
+		"xo": "^0.18.2"
+	},
+	"nyc": {
+		"reporter": [
+			"lcov",
+			"text"
+		]
+	},
+	"ava": {
+		"require": "babel-register"
+	},
+	"babel": {
+		"presets": [
+			[
+				"env",
+				{
+					"targets": {
+						"browsers": [
+							"last 2 versions",
+							"> 1%"
+						],
+						"node": "4"
+					}
+				}
+			]
+		]
+	}
+}
