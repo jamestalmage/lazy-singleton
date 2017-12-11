@@ -25,7 +25,7 @@ lazyDependency().doSomething();
 const lazyInstance = new lazySingleton.Sync(SomeConstructor)(...argsToPass);
 lazyInstance().memberFunction();
 
-// it can be used as a lazy require wrapper
+// it can be used as a lazy require wrapper - note we aren't chaining (...args) on the initial call.
 const lazyRequire = require('lazy-singleton')(require);
 const _ = lazyRequire('lodash');
 const lazyFoo = lazyRequire('foo');
@@ -38,6 +38,8 @@ This is similar to, but different from, the popular [once package](https://www.n
 
 
 ## API
+
+*Note: All the API examples below show the common usage of two chained function calls. This is so you can create a generator that creates multiple lazy singletons with different args passed to the function (see the lazyRequire example above).*
 
 ### lazySingleton(fn)(...args)
 
@@ -53,9 +55,9 @@ Type: `function`
 
 The args for to be passed to the lazily called function.
 
-*Note: The above is actually two chained function calls. This is so you can create a generator that creates multiple lazy singletons with different args passed to the function (see the lazyRequire example above).*
+&npbsp;
 
-*Also note: If `lazySingleton(fn)` is called with `new`, then `fn` will also be called with `new` if/when it is invoked. Useful for classes.*
+*Note: If `lazySingleton(fn)` is called with `new`, then `fn` will also be called with `new` if/when it is invoked. Useful for classes.*
 
 ### lazySingleton.sync(fn)(...args) and lazySingleton.Sync(fn)(...args)
 
