@@ -98,7 +98,7 @@ lazy((err, result) => {/* doSomething */});
 Another sugar function. When lazily initialized, a node style callback will be appended to `..args`, allowing you to leverage node style libraries:
 
 ```js
-const fileContents = lazySingleton.callback(fs.readFile)('some/path/to/file.txt');
+const fileContents = lazySingleton.callback(fs.readFile)('some/path/to/file.txt', 'utf8');
 
 // can be used as a promise
 fileContents().then(contents => console.log(contents));
